@@ -1,0 +1,29 @@
+{
+  "publicDistributionRepository": null,
+  "publicRepositoryConfirmedPublic": false,
+  "publicReleaseApproved": false,
+  "githubReleaseVerified": false,
+  "zipAssetVerified": false,
+  "sha256Verified": false,
+  "licenseReviewComplete": false,
+  "installationGuideReady": false,
+  "macos15Arm64DeviceTest": "not-recorded",
+  "unsignedDistributionRiskAccepted": false,
+  "releasePageUrl": null,
+  "macos": {
+    "status": "preparing",
+    "enabled": false,
+    "version": "0.6.0",
+    "minimumMacOS": "15.0",
+    "architecture": "arm64",
+    "package": "ZIP",
+    "releaseUrl": null,
+    "downloadUrl": null,
+    "sha256": null,
+    "developerIdSigned": false,
+    "notarized": false,
+    "signingDisclosure": "unsigned-and-not-notarized"
+  },
+  "windows": { "status": "coming-soon", "enabled": false, "formats": ["EXE", "MSI"], "releaseUrl": null, "downloadUrl": null },
+  "linux": { "status": "planned", "enabled": false, "formats": ["AppImage"], "releaseUrl": null, "downloadUrl": null }
+}

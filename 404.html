@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex">
+  <title>Page not found — Editra</title>
+  <style>
+    :root{color-scheme:dark;font-family:system-ui,-apple-system,BlinkMacSystemFont,"Hiragino Kaku Gothic ProN","Yu Gothic",sans-serif;background:#0d1725;color:#f6f8f8}*{box-sizing:border-box}body{margin:0;min-height:100vh;display:grid;place-items:center;padding:24px}.panel{max-width:620px;border:1px solid #263849;padding:clamp(28px,7vw,64px);background:#101e2f}.brand{color:#45c2b0;font-weight:700;letter-spacing:.08em}.code{margin:48px 0 10px;color:#8da0aa;font:12px ui-monospace,monospace}.title{font-size:clamp(32px,7vw,58px);line-height:1.08;letter-spacing:-.05em;margin:0 0 18px}.body{color:#b5c3c9;line-height:1.8;margin:0 0 30px}.home{display:inline-block;background:#45c2b0;color:#0d1725;text-decoration:none;font-weight:700;padding:13px 18px}.home:focus-visible{outline:3px solid white;outline-offset:4px}
+  </style>
+</head>
+<body>
+  <main class="panel">
+    <div class="brand">EDITRA</div>
+    <p class="code">404 · PAGE NOT FOUND</p>
+    <h1 class="title">ページが見つかりません。</h1>
+    <p class="body">リンクが古いか、ページの場所が変わった可能性があります。ホームへ戻ってください。</p>
+    <a class="home" id="home-link" href="/">Editraのホームへ</a>
+  </main>
+  <script>
+    const segments = location.pathname.split('/').filter(Boolean);
+    const isGitHubProjectPage = location.hostname.endsWith('.github.io') && segments.length > 0;
+    const siteRoot = isGitHubProjectPage ? `/${encodeURIComponent(segments[0])}/` : '/';
+    document.getElementById('home-link').href = siteRoot;
+  </script>
+</body>
+</html>
