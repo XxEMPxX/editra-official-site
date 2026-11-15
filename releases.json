@@ -1,29 +1,47 @@
 {
-  "publicDistributionRepository": null,
-  "publicRepositoryConfirmedPublic": false,
+  "siteUrl": "https://xxempxx.github.io/editra-official-site/",
+  "publicSiteDirect": true,
   "publicReleaseApproved": false,
-  "githubReleaseVerified": false,
-  "zipAssetVerified": false,
-  "sha256Verified": false,
+  "dmgAssetVerified": true,
+  "sha256Verified": true,
   "licenseReviewComplete": false,
+  "sourceMaterialsVerified": false,
+  "thirdPartyNoticesVerified": false,
+  "termsPublished": false,
+  "privacyNoticePublished": false,
+  "supportContactPublished": false,
   "installationGuideReady": false,
   "macos15Arm64DeviceTest": "not-recorded",
   "unsignedDistributionRiskAccepted": false,
-  "releasePageUrl": null,
+  "releasePageUrl": "https://xxempxx.github.io/editra-official-site/",
   "macos": {
     "status": "preparing",
     "enabled": false,
     "version": "0.6.0",
     "minimumMacOS": "15.0",
     "architecture": "arm64",
-    "package": "ZIP",
-    "releaseUrl": null,
+    "package": "DMG",
     "downloadUrl": null,
-    "sha256": null,
+    "sha256": "3e2f5de59ed5015f3039c15bc006e2d7f6c6759c2ce7ee05bfd141d1abf0a92a",
     "developerIdSigned": false,
     "notarized": false,
     "signingDisclosure": "unsigned-and-not-notarized"
   },
-  "windows": { "status": "coming-soon", "enabled": false, "formats": ["EXE", "MSI"], "releaseUrl": null, "downloadUrl": null },
-  "linux": { "status": "planned", "enabled": false, "formats": ["AppImage"], "releaseUrl": null, "downloadUrl": null }
+  "windows": {
+    "status": "coming-soon",
+    "enabled": false,
+    "formats": [
+      "EXE",
+      "MSI"
+    ],
+    "downloadUrl": null
+  },
+  "linux": {
+    "status": "planned",
+    "enabled": false,
+    "formats": [
+      "AppImage"
+    ],
+    "downloadUrl": null
+  }
 }
