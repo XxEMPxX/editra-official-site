@@ -42,7 +42,7 @@ function isPublicReleaseConfig(config) {
   if (!site || !page || !file) return false;
   const sitePrefix = site.pathname.endsWith('/') ? site.pathname : `${site.pathname}/`;
   const sameSitePage = page.origin === site.origin && page.pathname.startsWith(sitePrefix);
-  const sameSiteDownload = file.origin === site.origin && file.pathname.startsWith(`${sitePrefix}downloads/`);
+  const sameSiteDownload = (file.origin === site.origin && file.pathname.startsWith(`${sitePrefix}downloads/`)) || (file.origin === 'https://github.com' && file.pathname.startsWith('/XxEMPxX/editra-official-site/releases/download/'));
   const ownerDecision = config.publicReleaseDecision === 'approved' || config.publicReleaseDecision === 'approved-with-known-risks';
   const technicalReady = config.technicalReleaseReady === true && config.dmgAssetVerified === true && config.sha256Verified === true && config.installationGuideReady === true;
   const signingStateKnown = typeof mac.developerIdSigned === 'boolean' && typeof mac.notarized === 'boolean' && (mac.developerIdSigned || !mac.notarized);
