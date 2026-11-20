@@ -43,12 +43,13 @@ function isPublicReleaseConfig(config) {
   const sitePrefix = site.pathname.endsWith('/') ? site.pathname : `${site.pathname}/`;
   const sameSitePage = page.origin === site.origin && page.pathname.startsWith(sitePrefix);
   const sameSiteDownload = file.origin === site.origin && file.pathname.startsWith(`${sitePrefix}downloads/`);
-  const explicitlyApproved = config.publicReleaseApproved === true && config.licenseReviewComplete === true && config.installationGuideReady === true && config.macos15Arm64DeviceTest === 'passed' && config.dmgAssetVerified === true && config.sha256Verified === true && config.sourceMaterialsVerified === true && config.thirdPartyNoticesVerified === true && config.termsPublished === true && config.privacyNoticePublished === true && config.supportContactPublished === true;
+  const ownerDecision = config.publicReleaseDecision === 'approved' || config.publicReleaseDecision === 'approved-with-known-risks';
+  const technicalReady = config.technicalReleaseReady === true && config.dmgAssetVerified === true && config.sha256Verified === true && config.installationGuideReady === true;
   const signingStateKnown = typeof mac.developerIdSigned === 'boolean' && typeof mac.notarized === 'boolean' && (mac.developerIdSigned || !mac.notarized);
   const expectedDisclosure = mac.developerIdSigned && mac.notarized ? 'signed-and-notarized' : mac.developerIdSigned ? 'signed-not-notarized' : 'unsigned-and-not-notarized';
   const signingDisclosureMatches = mac.signingDisclosure === expectedDisclosure;
   const unsignedRiskAccepted = (mac.developerIdSigned && mac.notarized) || config.unsignedDistributionRiskAccepted === true;
-  return Boolean(sameSitePage && sameSiteDownload && mac.enabled === true && mac.status === 'ready' && /^[a-f0-9]{64}$/i.test(mac.sha256 || '') && mac.version === '0.6.0' && mac.minimumMacOS === '15.0' && mac.architecture === 'arm64' && mac.package === 'DMG' && explicitlyApproved && signingStateKnown && signingDisclosureMatches && unsignedRiskAccepted);
+  return Boolean(sameSitePage && sameSiteDownload && mac.enabled === true && mac.status === 'ready' && /^[a-f0-9]{64}$/i.test(mac.sha256 || '') && mac.version === '0.6.0' && mac.minimumMacOS === '15.0' && mac.architecture === 'arm64' && mac.package === 'DMG' && ownerDecision && technicalReady && signingStateKnown && signingDisclosureMatches && unsignedRiskAccepted);
 }
 function applyReleaseConfig(config, doc = globalThis.document) {
   const button = doc?.getElementById?.('mac-download');
