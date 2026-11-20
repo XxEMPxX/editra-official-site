@@ -121,7 +121,9 @@ function init(doc = globalThis.document, win = globalThis.window) {
   nav?.querySelectorAll('a').forEach(link => link.addEventListener('click', () => { nav.classList.remove('is-open'); menu?.setAttribute('aria-expanded','false'); }));
   doc.getElementById('mac-download')?.addEventListener('click', event => {
     const target = event.currentTarget;
-    if (target.disabled || !target.dataset.url || !httpsUrl(target.dataset.url) || new URL(target.dataset.url).origin !== globalThis.location.origin) {
+    const targetUrl = target.dataset.url ? httpsUrl(target.dataset.url) : null;
+    const allowedTarget = targetUrl && (targetUrl.origin === globalThis.location.origin || (targetUrl.origin === 'https://github.com' && targetUrl.pathname.startsWith('/XxEMPxX/editra-official-site/releases/download/')));
+    if (target.disabled || !allowedTarget) {
       const region = doc.getElementById('toast-region');
       if (region) region.textContent = doc.documentElement.lang === 'en' ? 'The public download is not available yet.' : '公開ダウンロードはまだ利用できません。';
       return;
